@@ -89,7 +89,6 @@ mapeo_SEGURO = {
 mapeo_NIVEL = {
   'PRIMARIA': 0,
   'SECUNDARIA': 1,
-  'Jardi'
   'INICIAL': 2,
 }
 
