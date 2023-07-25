@@ -1,0 +1,65 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="row mb-2 mt-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h1>Seleccionar columna</h1>
+        <br>
+        <form method="post">
+          {% csrf_token %}
+            <select name="titulo" class="form-select" id="titulo" required>
+                {% for item in items %}
+                    <option value="{{ item }}"> {{ item }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-primary mt-4" type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% if chart_data %}
+<div class="row mb-2 mt-4">
+  <div class="col">
+      <div class="card">
+      <div class="card-body">
+          <p>Grafico</p>
+          <div style="width: 80%; margin: auto;">
+            <canvas id="myChart"></canvas>
+          </div>
+      </div>
+      </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts%}
+{% if chart_data %}
+<script>
+  var chartData = {{ chart_data|safe }};
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: chartData.labels,
+          datasets: [{
+              label: 'Media según: {{ titulo }}',
+              data: chartData.data,
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+</script>
+{% endif %}
+{% endblock %}

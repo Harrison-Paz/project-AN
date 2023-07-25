@@ -1,0 +1,23 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="row mb-2 mt-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h1>Subir Dataset</h1>
+        <form
+          action="{% url 'subirDataset' %}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="file" class="form-control" id="id_archivo" name="archivo" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required>
+            <button class="btn btn-outline-primary" type="submit" id="inputGroupFileAddon04">Subir</button>
+          </div>
+          {% comment %} <button type="submit" class="btn btn-primary mt-4">Subir</button> {% endcomment %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

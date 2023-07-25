@@ -1,0 +1,31 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="row mb-2 mt-4">
+  <div class="col">
+    <div class="card col-sm-12 col-md-auto">
+      <div class="card-body">
+        <h1>Visualizar CSV</h1>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                {% for encabezado in datos.0 %}
+                <th>{{ encabezado }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for fila in datos %} {% if not forloop.first %}
+              <tr>
+                {% for columna in fila %}
+                <td>{{ columna }}</td>
+                {% endfor %}
+              </tr>
+              {% endif %} {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

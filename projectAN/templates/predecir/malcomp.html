@@ -1,0 +1,120 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="row mb-2 mt-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">Predecir</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% if 'NUCLEO_FAMILIAR' in lista_campos %}
+            <div class="form-group mt-1">
+                <label for="nucleo_familiar" class="form-label">NÚCLEO FAMILIAR:</label>
+                <select name="NUCLEO_FAMILIAR" class="form-select" id="nucleo_familiar" required>
+                  {% for key, value in map_NUCLEO_FAMILIAR.items %}
+                    <option value="{{ value }}"> {{ key }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+            {% if 'EDAD' in lista_campos %}
+            <div class="form-group mt-1">
+              <label for="edad" class="col-form-label">EDAD</label>
+              <br>
+              <div class="col">
+                <input class="form-control" type="number" id="edad" name="EDAD" min="0" max="99" required>
+              </div>
+            </div>
+            {% endif %}
+            {% if 'SEXO' in lista_campos %}
+            <div class="form-group mt-1">
+                <label for="sexo" class="form-label">SEXO:</label>
+                <select name="SEXO" class="form-select" id="sexo" required>
+                  {% for key, value in map_SEXO.items %}
+                    <option value="{{ value }}"> {{ key }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+            {% if 'ZONA' in lista_campos %}
+            <div class="form-group mt-1">
+                <label for="zona" class="form-label">ZONA:</label>
+                <select name="ZONA" class="form-select" id="zona" required>
+                  {% for key, value in map_ZONA.items %}
+                    <option value="{{ value }}"> {{ key }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+            {% if 'NOTA' in lista_campos %}
+            <div class="form-group mt-1">
+              <label for="nota" class="col-form-label">NOTA:</label>
+              <br>
+              <div class="col">
+                <input class="form-control" type="number" id="nota" name="NOTA" min="0" max="20" step="0.1" required>
+              </div>
+            </div>
+            {% endif %}
+            {% if 'TIPO' in lista_campos %}
+            <div class="form-group mt-1">
+                <label for="tipo" class="form-label">TIPO DE PENSIÓN:</label>
+                <select name="TIPO" class="form-select" id="tipo" required >
+                  {% for key, value in map_TIPO.items %}
+                    <option value="{{ value }}"> {{ key }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+            {% if 'RETRASOS' in lista_campos %}
+            <div class="form-group mt-1">
+              <label for="tardanza" class="col-form-label">RETRASOS:</label>
+              <br>
+              <div class="col">
+                <input class="form-control" type="number" id="tardanza" name="RETRASOS" min="0" required>
+              </div>
+            </div>
+            {% endif %}
+            {% if 'NIVEL' in lista_campos %}
+            <div class="form-group mt-1">
+                <label for="nivel" class="form-label">NIVEL EDUCATIVO:</label>
+                <select name="NIVEL" class="form-select" id="nivel" required>
+                  {% for key, value in map_NIVEL.items %}
+                    <option value="{{ value }}"> {{ key }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+            {% if 'SEGURO' in lista_campos %}
+            <div class="form-check mt-1">
+              <label class="form-label" for="seguro"> SEGURO </label>
+              <input class="form-check-input" type="checkbox" id="seguro" name="SEGURO" required>
+            </div>
+            {% endif %}
+            <button class="btn btn-primary mt-4" type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h1>Resultados:</h1>
+        <div>
+          <input class="form-control" type="text" value="{{ resultado }}" readonly>
+          <div class="text-light small fw-semibold mb-1">Comportamiento</div>
+          {% if resultado%}
+          <div class="progress mb-3">
+            {% if resultado == "BAJA" %}
+              <div class="progress-bar bg-primary shadow-none" role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+            {% elif  resultado == "MEDIA" %}
+            <div class="progress-bar bg-warning shadow-none" role="progressbar" style="width: 100%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+            {% elif resultado == "ALTA" %}
+            <div class="progress-bar bg-danger shadow-none" role="progressbar" style="width: 100%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
