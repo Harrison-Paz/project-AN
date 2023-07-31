@@ -16,23 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from .views import main, comportamiento, retiro, rendimiento
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="index"),
-    path('subir/', views.subirDataset, name='subirDataset'),
-    path('ver/', views.verDataset, name='verDataset'),
-    path('comportamiento/probabilidad', views.prob_comp, name='prob_comp'),
-    path('comportamiento/entrenar', views.comp_entrenar, name='comp_entrenar'),
-    path('comportamiento/prediccion', views.predecir_comp, name='predecir_comp'),
-    path('comportamiento/grafico', views.grafico_comp, name='grafico_comp'),
-    path('rendimiento/probabilidad', views.prob_rend, name='prob_rend'),
-    path('rendimiento/entrenar', views.rend_entrenar, name='rend_entrenar'), 
-    path('rendimiento/prediccion', views.predecir_rend, name='predecir_rend'),
-    path('rendimiento/grafico', views.grafico_rend, name='grafico_rend'),
-    path('retiro/probabilidad', views.prob_ret, name='prob_ret'),
-    path('retiro/entrenar', views.ret_entrenar, name='ret_entrenar'),
-    path('retiro/prediccion', views.predecir_ret, name='predecir_ret'),
-    path('retiro/grafico', views.grafico_ret, name='grafico_ret'),
+    
+    path('', main.index, name="index"),
+    path('subir/', main.subirDataset, name='subirDataset'),
+    path('ver/', main.verDataset, name='verDataset'),
+
+    path('comportamiento/media', comportamiento.view_media_comportamiento, name='comportamiento_media'),
+    path('comportamiento/relacion', comportamiento.view_relacion_comportamiento, name='comportamiento_relacion'),
+    path('comportamiento/entrenar', comportamiento.view_entrenar_comportamiento, name='comportamiento_entrenar'),
+    path('comportamiento/predecir', comportamiento.view_predecir_comportamiento, name='comportamiento_predecir'),
+
+    path('retiro/media', retiro.view_media_retiro, name='retiro_media'),
+    path('retiro/relacion', retiro.view_relacion_retiro, name='retiro_relacion'),
+    path('retiro/entrenar', retiro.view_entrenar_retiro, name='retiro_entrenar'),
+    path('retiro/predecir', retiro.view_predecir_retiro, name='retiro_predecir'),
+
+    path('rendimiento/media', rendimiento.view_media_rendimiento, name='rendimiento_media'),
+    path('rendimiento/relacion', rendimiento.view_relacion_rendimiento, name='rendimiento_relacion'),
+    path('rendimiento/entrenar', rendimiento.view_entrenar_rendimiento, name='rendimiento_entrenar'),
+    path('rendimiento/predecir', rendimiento.view_predecir_rendimiento, name='rendimiento_predecir'),
 ]

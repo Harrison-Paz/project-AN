@@ -5,11 +5,11 @@
       <div class="card-body">
         <h1 class="card-title">Entrenar modelo</h1>
         <p class="card-text">Seleccionar columnas:</p>
-        <form method="post" action="{% url 'ret_entrenar' %}">
+        <form method="post">
           {% csrf_token %} {% for item in items %}
           <div class="form-check form-switch">
             <input class="form-check-input" name="items_checkbox" type="checkbox" id="check" value={{ item }}
-              {% if item in selected %} checked {% endif %}>
+            {% if item in selected %} checked {% endif %}>
             <label class="form-check-label" for="check">{{ item }}</label>
           </div>
           {% endfor %}
@@ -19,9 +19,9 @@
         <br>
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Precisión</span>
+            <span class="input-group-text" id="inputGroup-sizing-lg">Error</span>
           </div>
-          <input type="text" class="form-control" value={{ accuracy }}>
+          <input type="text" class="form-control" value={{ error }}>
         </div>
       </div>
     </div>
