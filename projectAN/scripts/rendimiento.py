@@ -11,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestRegressor
 
-def entrenar_rendimiento(dataset, columnas, target):
+def entrenar_rendimiento(dataset, columnas):
     target = "NOTA"
     df = pd.read_csv(dataset)
     df = df.drop(columns=["ID"])
