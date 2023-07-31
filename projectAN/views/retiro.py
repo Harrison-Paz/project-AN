@@ -62,7 +62,6 @@ def view_relacion_retiro(request):
         'data': list(map(lambda x: x['Importancia'], lista))[:15],
     })
 
-    print(chart_data)
     context = {'acc': acc, 'list': lista, 'chart_data': chart_data}
 
     return render(request, 'retiro/relacion.html', context=context)

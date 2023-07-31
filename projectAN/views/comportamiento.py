@@ -63,7 +63,6 @@ def view_relacion_comportamiento(request):
         'data': list(map(lambda x: x['Importancia'], lista))[:15],
     })
 
-    print(chart_data)
     context = {'acc': acc, 'list': lista, 'chart_data': chart_data}
 
     return render(request, 'comportamiento/relacion.html', context=context)
