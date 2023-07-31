@@ -112,7 +112,7 @@ def view_predecir_comportamiento(request):
         'map_SEGURO': mapeo_SEGURO,
         'map_NIVEL': mapeo_NIVEL,
         'map_CONDUCTA_INAPROPIADA': mapeo_CONDUCTA_INAPROPIADA,
-        'lista_campos': modelo_comportamiento,
+        'lista_campos': modelo_comportamiento_lista,
         'resultado': modelo_comportamiento_resultado
     }
 

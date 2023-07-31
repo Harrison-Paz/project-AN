@@ -50,9 +50,6 @@ def entrenar_rendimiento(dataset, columnas, target):
 
     mse = mean_squared_error(y_test, predicciones)
 
-    resultados = pd.DataFrame({"Prediccion": predicciones, "Real": y_test})
-    print(resultados)
-    print("Error cuadrático medio:", mse)
     return regresor, mse
 
 def relacion_rendimiento(dataset):
@@ -73,7 +70,6 @@ def relacion_rendimiento(dataset):
     y_pred = model.predict(X_test)
 
     accuracy = accuracy_score(y_test, y_pred)
-    print(f'Exactitud del modelo: {accuracy:.2f}')
 
     importances = abs(model.coef_[0])
 

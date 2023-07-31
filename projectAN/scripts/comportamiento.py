@@ -54,9 +54,6 @@ def entrenar_comportamiento(dataset, columnas):
 
     accuracy = accuracy_score(y_test, predicciones)
 
-    resultados = pd.DataFrame({"Prediccion": predicciones, "Real": y_test})
-    print(resultados)
-    print("Precisión:", accuracy)
     return naive, accuracy
 
 def relacion_comportamiento(dataset):
@@ -77,7 +74,6 @@ def relacion_comportamiento(dataset):
     y_pred = model.predict(X_test)
 
     accuracy = accuracy_score(y_test, y_pred)
-    print(f'Exactitud del modelo: {accuracy:.2f}')
 
     importances = abs(model.coef_[0])
 
