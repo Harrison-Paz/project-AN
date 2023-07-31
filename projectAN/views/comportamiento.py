@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 
+
 from ..scripts.comportamiento import relacion_comportamiento, entrenar_comportamiento
 from ..scripts.utils.mapeo import mapeo_CONDUCTA_INAPROPIADA
 
